@@ -74,6 +74,7 @@
 
             *::-webkit-scrollbar {
                 width: 0;
+                display: none;
             }
 
             *::-webkit-scrollbar-track {
@@ -118,34 +119,24 @@
             }
 
             .carousel__slide:nth-child(1) {
-                background-image: url('./assets/img/ci1.jpg');
+                background-image: url("./assets/img/ci1.jpg");
                 background-size: cover;
                 background-position-y: -25vh;
             }
             .carousel__slide:nth-child(2) {
-                background-image: url('./assets/img/ci2.jpg');
+                background-image: url("./assets/img/ci2.jpg");
                 background-size: cover;
                 background-position-y: -25vh;
             }
             .carousel__slide:nth-child(3) {
-                background-image: url('./assets/img/ci3.jpg');
+                background-image: url("./assets/img/ci3.jpg");
                 background-size: cover;
                 background-position-y: -25vh;
             }
             .carousel__slide:nth-child(4) {
-                background-image: url('./assets/img/ci4.jpg');
+                background-image: url("./assets/img/ci4.jpg");
                 background-size: cover;
                 background-position-y: -25vh;
-            }
-
-            .carousel__slide:before {
-                content: counter(item);
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate3d(-50%, -40%, 70px);
-                color: #fff;
-                font-size: 2em;
             }
 
             .carousel__snapper {
@@ -252,7 +243,7 @@
                 <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-color: white">
                     <span id="bg-carousel" class="w-full h-full absolute">
                         <section class="carousel" aria-label="Gallery">
-                            <ol class="carousel__viewport" style="height: 75vh">
+                            <ol class="carousel__viewport">
                                 <li id="carousel__slide1" tabindex="0" class="carousel__slide">
                                     <div class="carousel__snapper"></div>
                                     <a href="#carousel__slide4" class="carousel__prev"></a>

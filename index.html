@@ -20,9 +20,168 @@
                 background-color: transparent !important;
                 transition: background-color 200ms linear;
             }
+
+            @keyframes tonext {
+                75% {
+                    left: 0;
+                }
+                95% {
+                    left: 100%;
+                }
+                98% {
+                    left: 100%;
+                }
+                99% {
+                    left: 0;
+                }
+            }
+
+            @keyframes tostart {
+                75% {
+                    left: 0;
+                }
+                95% {
+                    left: -300%;
+                }
+                98% {
+                    left: -300%;
+                }
+                99% {
+                    left: 0;
+                }
+            }
+
+            @keyframes snap {
+                96% {
+                    scroll-snap-align: center;
+                }
+                97% {
+                    scroll-snap-align: none;
+                }
+                99% {
+                    scroll-snap-align: none;
+                }
+                100% {
+                    scroll-snap-align: center;
+                }
+            }
+
+            * {
+                box-sizing: border-box;
+                scrollbar-color: transparent transparent; /* thumb and track color */
+                scrollbar-width: 0px;
+            }
+
+            *::-webkit-scrollbar {
+                width: 0;
+            }
+
+            *::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            *::-webkit-scrollbar-thumb {
+                background: transparent;
+                border: none;
+            }
+
+            * {
+                -ms-overflow-style: none;
+            }
+
+            ol,
+            li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .carousel__viewport {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                display: flex;
+                overflow-x: scroll;
+                counter-reset: item;
+                scroll-behavior: smooth;
+                scroll-snap-type: x mandatory;
+            }
+
+            .carousel__slide {
+                position: relative;
+                flex: 0 0 100%;
+                width: 100%;
+                background-color: white;
+                counter-increment: item;
+            }
+
+            .carousel__slide:nth-child(1) {
+                background-image: url('./assets/img/ci1.jpg');
+                background-size: cover;
+                background-position-y: -25vh;
+            }
+            .carousel__slide:nth-child(2) {
+                background-image: url('./assets/img/ci2.jpg');
+                background-size: cover;
+                background-position-y: -25vh;
+            }
+            .carousel__slide:nth-child(3) {
+                background-image: url('./assets/img/ci3.jpg');
+                background-size: cover;
+                background-position-y: -25vh;
+            }
+            .carousel__slide:nth-child(4) {
+                background-image: url('./assets/img/ci4.jpg');
+                background-size: cover;
+                background-position-y: -25vh;
+            }
+
+            .carousel__slide:before {
+                content: counter(item);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -40%, 70px);
+                color: #fff;
+                font-size: 2em;
+            }
+
+            .carousel__snapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                scroll-snap-align: center;
+            }
+
+            @media (hover: hover) {
+                .carousel__snapper {
+                    animation-name: tonext, snap;
+                    animation-timing-function: ease;
+                    animation-duration: 4s;
+                    animation-iteration-count: infinite;
+                }
+
+                .carousel__slide:last-child .carousel__snapper {
+                    animation-name: tostart, snap;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .carousel__snapper {
+                    animation-name: none;
+                }
+            }
+
+            .carousel:hover .carousel__snapper,
+            .carousel:focus-within .carousel__snapper {
+                animation-name: none;
+            }
         </style>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
         <title>Divine Architecture | Home</title>
     </head>
 
@@ -90,13 +249,32 @@
 
         <main>
             <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
-                <div
-                    class="absolute top-0 w-full h-full bg-center bg-cover"
-                    style="background-image: url('./assets/img/pexels-visionpic-net-1170686.jpg')"
-                >
-                    <!-- <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span> -->
+                <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-color: white">
                     <span id="bg-carousel" class="w-full h-full absolute">
-                        
+                        <section class="carousel" aria-label="Gallery">
+                            <ol class="carousel__viewport" style="height: 75vh">
+                                <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+                                    <div class="carousel__snapper"></div>
+                                    <a href="#carousel__slide4" class="carousel__prev"></a>
+                                    <a href="#carousel__slide2" class="carousel__next"></a>
+                                </li>
+                                <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+                                    <div class="carousel__snapper"></div>
+                                    <a href="#carousel__slide1" class="carousel__prev"></a>
+                                    <a href="#carousel__slide3" class="carousel__next"></a>
+                                </li>
+                                <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+                                    <div class="carousel__snapper"></div>
+                                    <a href="#carousel__slide2" class="carousel__prev"></a>
+                                    <a href="#carousel__slide4" class="carousel__next"></a>
+                                </li>
+                                <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+                                    <div class="carousel__snapper"></div>
+                                    <a href="#carousel__slide3" class="carousel__prev"></a>
+                                    <a href="#carousel__slide1" class="carousel__next"></a>
+                                </li>
+                            </ol>
+                        </section>
                     </span>
                 </div>
 
@@ -668,6 +846,14 @@
                 document.getElementById("nav").classList.remove("navbar-fixed-top-scrolled");
             }
         });
+
+        setTimeout(() => {
+            if (document.getElementById("carousel-1").checked === true) {
+                document.getElementById("carousel-2").checked = true;
+            } else {
+                document.getElementById("carousel-3").checked = true;
+            }
+        }, 3000);
     </script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </html>

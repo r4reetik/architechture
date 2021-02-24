@@ -1,275 +1,295 @@
 <!DOCTYPE html>
 <html style="scroll-behavior: smooth">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="shortcut icon" href="./assets/img/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
-        <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
-        />
-        <style>
-            .navbar-fixed-top-scrolled {
-                background-color: #282a36 !important;
-                transition: background-color 200ms linear;
-            }
-            .navbar-fixed-top {
-                background-color: transparent !important;
-                transition: background-color 200ms linear;
-            }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/img/apple-icon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+    <style>
+      .navbar-fixed-top-scrolled {
+        background-color: #282a36 !important;
+        transition: background-color 200ms linear;
+      }
+      .navbar-fixed-top {
+        background-color: transparent !important;
+        transition: background-color 200ms linear;
+      }
 
-            @keyframes tonext {
-                75% {
-                    left: 0;
-                }
-                95% {
-                    left: 100%;
-                }
-                98% {
-                    left: 100%;
-                }
-                99% {
-                    left: 0;
-                }
-            }
+      @keyframes tonext {
+        75% {
+          left: 0;
+        }
+        95% {
+          left: 100%;
+        }
+        98% {
+          left: 100%;
+        }
+        99% {
+          left: 0;
+        }
+      }
 
-            @keyframes tostart {
-                75% {
-                    left: 0;
-                }
-                95% {
-                    left: -300%;
-                }
-                98% {
-                    left: -300%;
-                }
-                99% {
-                    left: 0;
-                }
-            }
+      @keyframes tostart {
+        75% {
+          left: 0;
+        }
+        95% {
+          left: -300%;
+        }
+        98% {
+          left: -300%;
+        }
+        99% {
+          left: 0;
+        }
+      }
 
-            @keyframes snap {
-                96% {
-                    scroll-snap-align: center;
-                }
-                97% {
-                    scroll-snap-align: none;
-                }
-                99% {
-                    scroll-snap-align: none;
-                }
-                100% {
-                    scroll-snap-align: center;
-                }
-            }
+      @keyframes snap {
+        96% {
+          scroll-snap-align: center;
+        }
+        97% {
+          scroll-snap-align: none;
+        }
+        99% {
+          scroll-snap-align: none;
+        }
+        100% {
+          scroll-snap-align: center;
+        }
+      }
 
-            * {
-                box-sizing: border-box;
-                scrollbar-color: transparent transparent; /* thumb and track color */
-                scrollbar-width: 0px;
-            }
+      * {
+        box-sizing: border-box;
+        scrollbar-color: transparent transparent; /* thumb and track color */
+        scrollbar-width: 0px;
+      }
 
-            *::-webkit-scrollbar {
-                width: 0;
-                display: none;
-            }
+      *::-webkit-scrollbar {
+        width: 0;
+        display: none;
+      }
 
-            *::-webkit-scrollbar-track {
-                background: transparent;
-            }
+      *::-webkit-scrollbar-track {
+        background: transparent;
+      }
 
-            *::-webkit-scrollbar-thumb {
-                background: transparent;
-                border: none;
-            }
+      *::-webkit-scrollbar-thumb {
+        background: transparent;
+        border: none;
+      }
 
-            * {
-                -ms-overflow-style: none;
-            }
+      * {
+        -ms-overflow-style: none;
+      }
 
-            ol,
-            li {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
+      ol,
+      li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
 
-            .carousel__viewport {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                display: flex;
-                overflow-x: scroll;
-                counter-reset: item;
-                scroll-behavior: smooth;
-                scroll-snap-type: x mandatory;
-            }
+      .carousel__viewport {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        overflow-x: scroll;
+        counter-reset: item;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+      }
 
-            .carousel__slide {
-                position: relative;
-                flex: 0 0 100%;
-                width: 100%;
-                background-color: white;
-                counter-increment: item;
-            }
+      .carousel__slide {
+        position: relative;
+        flex: 0 0 100%;
+        width: 100%;
+        background-color: white;
+        counter-increment: item;
+      }
 
-            .carousel__slide:nth-child(1) {
-                background-image: url("./assets/img/ci1.jpg");
-                background-size: cover;
-                background-position-y: -25vh;
-            }
-            .carousel__slide:nth-child(2) {
-                background-image: url("./assets/img/ci2.jpg");
-                background-size: cover;
-                background-position-y: -25vh;
-            }
-            .carousel__slide:nth-child(3) {
-                background-image: url("./assets/img/ci3.jpg");
-                background-size: cover;
-                background-position-y: -25vh;
-            }
-            .carousel__slide:nth-child(4) {
-                background-image: url("./assets/img/ci4.jpg");
-                background-size: cover;
-                background-position-y: -25vh;
-            }
+      .carousel__slide:nth-child(1) {
+        background-image: url("./assets/img/ci1.jpg");
+        background-size: cover;
+        background-position-y: -25vh;
+      }
+      .carousel__slide:nth-child(2) {
+        background-image: url("./assets/img/ci2.jpg");
+        background-size: cover;
+        background-position-y: -25vh;
+      }
+      .carousel__slide:nth-child(3) {
+        background-image: url("./assets/img/ci3.jpg");
+        background-size: cover;
+        background-position-y: -25vh;
+      }
+      .carousel__slide:nth-child(4) {
+        background-image: url("./assets/img/ci4.jpg");
+        background-size: cover;
+        background-position-y: -25vh;
+      }
 
-            .carousel__snapper {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                scroll-snap-align: center;
-            }
+      .carousel__snapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        scroll-snap-align: center;
+      }
 
-            @media (hover: hover) {
-                .carousel__snapper {
-                    animation-name: tonext, snap;
-                    animation-timing-function: ease;
-                    animation-duration: 4s;
-                    animation-iteration-count: infinite;
-                }
+      @media (hover: hover) {
+        .carousel__snapper {
+          animation-name: tonext, snap;
+          animation-timing-function: ease;
+          animation-duration: 4s;
+          animation-iteration-count: infinite;
+        }
 
-                .carousel__slide:last-child .carousel__snapper {
-                    animation-name: tostart, snap;
-                }
-            }
+        .carousel__slide:last-child .carousel__snapper {
+          animation-name: tostart, snap;
+        }
+      }
 
-            @media (prefers-reduced-motion: reduce) {
-                .carousel__snapper {
-                    animation-name: none;
-                }
-            }
+      @media (prefers-reduced-motion: reduce) {
+        .carousel__snapper {
+          animation-name: none;
+        }
+      }
 
-            .carousel:hover .carousel__snapper,
-            .carousel:focus-within .carousel__snapper {
-                animation-name: none;
-            }
-        </style>
+      .carousel:hover .carousel__snapper,
+      .carousel:focus-within .carousel__snapper {
+        animation-name: none;
+      }
+    </style>
 
-        <title>Divine Architecture | Home</title>
-    </head>
+    <title>Divine Architecture | Home</title>
+  </head>
 
-    <body class="text-gray-800 antialiased">
-        <nav class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg" id="nav">
-            <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-                <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                    <a
-                        class="text-2xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
-                        href="./index.html"
-                    >
-                        Divine Architecture </a
-                    ><button
-                        class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-                        type="button"
-                        onclick="toggleNavbar('example-collapse-navbar')"
-                    >
-                        <i class="text-white fas fa-bars"></i>
-                    </button>
-                </div>
-                <div
-                    class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"
-                    id="example-collapse-navbar"
+  <body class="text-gray-800 antialiased">
+    <nav
+      class="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+      id="nav"
+    >
+      <div
+        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+      >
+        <div
+          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+        >
+          <a
+            class="text-2xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
+            href="./index.html"
+          >
+            Divine Architecture </a
+          ><button
+            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+            onclick="toggleNavbar('example-collapse-navbar')"
+          >
+            <i class="text-white fas fa-bars"></i>
+          </button>
+        </div>
+        <div
+          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"
+          id="example-collapse-navbar"
+        >
+          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+            <li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="./services.html"
+              >
+                <span class="inline-block ml-2"> Services </span>
+              </a>
+            </li>
+            <li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="./projects.html"
+              >
+                <span class="inline-block ml-2">Projects</span>
+              </a>
+            </li>
+            <li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="#about-us"
+              >
+                <span class="inline-block ml-2">About Us</span>
+              </a>
+            </li>
+            <li class="flex items-center">
+              <a href="#contact-us">
+                <button
+                  class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                  type="button"
+                  style="transition: all 0.15s ease 0s"
                 >
-                    <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-                        <li class="flex items-center">
-                            <a
-                                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                                href="./services.html"
-                            >
-                                <span class="inline-block ml-2"> Services </span>
-                            </a>
-                        </li>
-                        <!-- <li class="flex items-center">
-                            <a
-                                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                                href="./projects.html"
-                            >
-                                <span class="inline-block ml-2">Projects</span>
-                            </a>
-                        </li> -->
-                        <li class="flex items-center">
-                            <a
-                                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                                href="#about-us"
-                            >
-                                <span class="inline-block ml-2">About Us</span>
-                            </a>
-                        </li>
-                        <li class="flex items-center">
-                            <a href="#contact-us">
-                                <button
-                                    class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-                                    type="button"
-                                    style="transition: all 0.15s ease 0s"
-                                >
-                                    <i class="fas fa-envelope-open-text mr-1"></i> Contact Us
-                                </button>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                  <i class="fas fa-envelope-open-text mr-1"></i> Contact Us
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-        <main>
-            <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
-                <div class="absolute top-0 w-full h-full bg-center bg-cover" style="background-color: white">
-                    <span id="bg-carousel" class="w-full h-full absolute">
-                        <section class="carousel" aria-label="Gallery">
-                            <ol class="carousel__viewport">
-                                <li id="carousel__slide1" tabindex="0" class="carousel__slide">
-                                    <div class="carousel__snapper"></div>
-                                    <a href="#carousel__slide4" class="carousel__prev"></a>
-                                    <a href="#carousel__slide2" class="carousel__next"></a>
-                                </li>
-                                <li id="carousel__slide2" tabindex="0" class="carousel__slide">
-                                    <div class="carousel__snapper"></div>
-                                    <a href="#carousel__slide1" class="carousel__prev"></a>
-                                    <a href="#carousel__slide3" class="carousel__next"></a>
-                                </li>
-                                <li id="carousel__slide3" tabindex="0" class="carousel__slide">
-                                    <div class="carousel__snapper"></div>
-                                    <a href="#carousel__slide2" class="carousel__prev"></a>
-                                    <a href="#carousel__slide4" class="carousel__next"></a>
-                                </li>
-                                <li id="carousel__slide4" tabindex="0" class="carousel__slide">
-                                    <div class="carousel__snapper"></div>
-                                    <a href="#carousel__slide3" class="carousel__prev"></a>
-                                    <a href="#carousel__slide1" class="carousel__next"></a>
-                                </li>
-                            </ol>
-                        </section>
-                    </span>
-                </div>
+    <main>
+      <div
+        class="relative pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 75vh"
+      >
+        <div
+          class="absolute top-0 w-full h-full bg-center bg-cover"
+          style="background-color: white"
+        >
+          <span id="bg-carousel" class="w-full h-full absolute">
+            <section class="carousel" aria-label="Gallery">
+              <ol class="carousel__viewport">
+                <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+                  <div class="carousel__snapper"></div>
+                  <a href="#carousel__slide4" class="carousel__prev"></a>
+                  <a href="#carousel__slide2" class="carousel__next"></a>
+                </li>
+                <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+                  <div class="carousel__snapper"></div>
+                  <a href="#carousel__slide1" class="carousel__prev"></a>
+                  <a href="#carousel__slide3" class="carousel__next"></a>
+                </li>
+                <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+                  <div class="carousel__snapper"></div>
+                  <a href="#carousel__slide2" class="carousel__prev"></a>
+                  <a href="#carousel__slide4" class="carousel__next"></a>
+                </li>
+                <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+                  <div class="carousel__snapper"></div>
+                  <a href="#carousel__slide3" class="carousel__prev"></a>
+                  <a href="#carousel__slide1" class="carousel__next"></a>
+                </li>
+              </ol>
+            </section>
+          </span>
+        </div>
 
-                <!-- <div class="container relative mx-auto">
+        <!-- <div class="container relative mx-auto">
                     <div class="items-center flex flex-wrap">
                         <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                             <div class="pr-12">
@@ -282,121 +302,144 @@
                         </div>
                     </div>
                 </div> -->
-                <div
-                    class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-                    style="height: 70px; transform: translateZ(0px)"
-                >
-                    <svg
-                        class="absolute bottom-0 overflow-hidden"
-                        xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="none"
-                        version="1.1"
-                        viewBox="0 0 2560 100"
-                        x="0"
-                        y="0"
-                    >
-                        <polygon class="text-gray-300 fill-current" points="2560 0 2560 100 0 100"></polygon>
-                    </svg>
+        <div
+          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+          style="height: 70px; transform: translateZ(0px)"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-gray-300 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+      </div>
+      <section class="pb-20 bg-gray-300 -mt-24">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap">
+            <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
+                  >
+                    <i class="fas fa-award"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">Interior Design</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                    With years of experience, Divine Architecture is a
+                    multidisciplinary Architectural & Interior Designing Studio,
+                    specializing in premium Residential, Commercial and Hotel
+                    Interiors. We don’t follow any particular STYLE or CONCEPT;
+                    rather, we transform spaces from our client’s perspective.
+                    We defines style and innovation through its designs and
+                    interior setups, giving Complexes.
+                  </p>
                 </div>
+              </div>
             </div>
-            <section class="pb-20 bg-gray-300 -mt-24">
-                <div class="container mx-auto px-4">
-                    <div class="flex flex-wrap">
-                        <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-                            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                                <div class="px-4 py-5 flex-auto">
-                                    <div
-                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
-                                    >
-                                        <i class="fas fa-award"></i>
-                                    </div>
-                                    <h6 class="text-xl font-semibold">Interior Design</h6>
-                                    <p class="mt-2 mb-4 text-gray-600">
-                                        With years of experience, Divine Architecture is a multidisciplinary Architectural &
-                                        Interior Designing Studio, specializing in premium Residential, Commercial and Hotel
-                                        Interiors. We don’t follow any particular STYLE or CONCEPT; rather, we transform spaces
-                                        from our client’s perspective. We defines style and innovation through its designs and
-                                        interior setups, giving Complexes.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-4/12 px-4 text-center">
-                            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                                <div class="px-4 py-5 flex-auto">
-                                    <div
-                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
-                                    >
-                                        <i class="fas fa-retweet"></i>
-                                    </div>
-                                    <h6 class="text-xl font-semibold">Structural Design</h6>
-                                    <p class="mt-2 mb-4 text-gray-600">
-                                        Our structural engineers develop efficient 3D structural detailing plans to assist
-                                        contractors, EPC firms and steel fabricators in erecting facilities of immense strength.
-                                        We aid sheet metal fabricators and plant owners by developing 2D drafts and 3D CAD
-                                        models for metal structural element such as glazing, claddings, enclosures, etc. and
-                                        improve their productivity.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-6 w-full md:w-4/12 px-4 text-center">
-                            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                                <div class="px-4 py-5 flex-auto">
-                                    <div
-                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
-                                    >
-                                        <i class="fas fa-fingerprint"></i>
-                                    </div>
-                                    <h6 class="text-xl font-semibold">Consultancy</h6>
-                                    <p class="mt-2 mb-4 text-gray-600">
-                                        Architect and develop customer solutions with product line knowledge, storage,
-                                        management, networking and other client processes. Educate and suggest clients on
-                                        industry trends. Estimate, propose and negotiate projects delivery process on time and
-                                        within budget. Architect and develop customer solutions with product line knowledge,
-                                        storage, management, networking and other client processes.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
+                  >
+                    <i class="fas fa-retweet"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">Structural Design</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                    Our structural engineers develop efficient 3D structural
+                    detailing plans to assist contractors, EPC firms and steel
+                    fabricators in erecting facilities of immense strength. We
+                    aid sheet metal fabricators and plant owners by developing
+                    2D drafts and 3D CAD models for metal structural element
+                    such as glazing, claddings, enclosures, etc. and improve
+                    their productivity.
+                  </p>
                 </div>
-            </section>
-            <section class="relative py-20" id="about-us">
+              </div>
+            </div>
+            <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
+                  >
+                    <i class="fas fa-fingerprint"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">Consultancy</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                    Architect and develop customer solutions with product line
+                    knowledge, storage, management, networking and other client
+                    processes. Educate and suggest clients on industry trends.
+                    Estimate, propose and negotiate projects delivery process on
+                    time and within budget. Architect and develop customer
+                    solutions with product line knowledge, storage, management,
+                    networking and other client processes.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative py-20" id="about-us">
+        <div
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+          style="height: 80px; transform: translateZ(0px)"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-white fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div class="container mx-auto px-4">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+              <img
+                alt="..."
+                class="max-w-full rounded-lg shadow-lg"
+                src="./assets/img/growing_company.jpg"
+              />
+            </div>
+            <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+              <div class="md:pr-12">
                 <div
-                    class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-                    style="height: 80px; transform: translateZ(0px)"
+                  class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300"
                 >
-                    <svg
-                        class="absolute bottom-0 overflow-hidden"
-                        xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="none"
-                        version="1.1"
-                        viewBox="0 0 2560 100"
-                        x="0"
-                        y="0"
-                    >
-                        <polygon class="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
-                    </svg>
+                  <i class="fas fa-rocket text-xl"></i>
                 </div>
-                <div class="container mx-auto px-4">
-                    <div class="items-center flex flex-wrap">
-                        <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-                            <img alt="..." class="max-w-full rounded-lg shadow-lg" src="./assets/img/growing_company.jpg" />
-                        </div>
-                        <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-                            <div class="md:pr-12">
-                                <div
-                                    class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300"
-                                >
-                                    <i class="fas fa-rocket text-xl"></i>
-                                </div>
-                                <h3 class="text-3xl font-semibold">A growing company</h3>
-                                <p class="mt-4 text-lg leading-relaxed text-gray-600">
-                                    We at Divine Architecture give our best to provide customers with best architectural
-                                    solutions Our objective is to work on customer satisfaction.
-                                </p>
-                                <!-- <ul class="list-none mt-6">
+                <h3 class="text-3xl font-semibold">A growing company</h3>
+                <p class="mt-4 text-lg leading-relaxed text-gray-600">
+                  We at Divine Architecture give our best to provide customers
+                  with best architectural solutions Our objective is to work on
+                  customer satisfaction.
+                </p>
+                <!-- <ul class="list-none mt-6">
                                     <li class="py-2">
                                         <div class="flex items-center">
                                             <div>
@@ -437,414 +480,477 @@
                                         </div>
                                     </li>
                                 </ul> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-wrap items-center mt-32">
-                    <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-                        <div
-                            class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
-                        >
-                            <i class="fas fa-user-friends text-xl"></i>
-                        </div>
-                        <h3 class="text-3xl mb-2 font-semibold leading-normal">Working with us is a pleasure</h3>
-                        <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                            We Divine Architecture is an architectural firm based in Delhi, serving the surrounding are of
-                            Gurugram, Noida, NCR and all over India. which provides you with services like architecture,interior
-                            & outdoor designing,floor plannig and consultancy etc.
-                        </p>
-                        <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                            It’s our mission at Divine Architectural to provide client focused service through our responsible
-                            practice of Architecture. Our tradition of dedication, professionalism and outstanding customer
-                            service is a testament to that mission as we strive each day for excellence in bringing our valued
-                            clients’ ideas to life.
-                        </p>
-                        <a href="#contact-us">
-                            <button
-                                class="text-white bg-gray-800 active:bg-gray-100 text-s font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0"
-                                type="button"
-                                style="transition: all 0.15s ease 0s"
-                            >
-                                <i class="fas fa-envelope-open-text mr-1"></i> Get in touch
-                            </button>
-                        </a>
-                    </div>
-                    <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-                        <div
-                            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600"
-                        >
-                            <img alt="..." src="./assets/img/work_with_us.jpg" class="w-full align-middle rounded-t-lg" />
-                            <blockquote class="relative p-8 mb-4">
-                                <svg
-                                    preserveAspectRatio="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 583 95"
-                                    class="absolute left-0 w-full block"
-                                    style="height: 95px; top: -94px"
-                                >
-                                    <polygon points="-30,95 583,95 583,65" class="text-pink-600 fill-current"></polygon>
-                                </svg>
-                                <h4 class="text-xl font-bold text-white">Experienced Experts</h4>
-                                <p class="text-md font-light mt-2 text-white">
-                                    Our Architectural experts provides you with their best architectural services through their
-                                    years or experience and expertise.
-                                </p>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="pt-20 pb-48">
-                <div class="container mx-auto px-4">
-                    <div class="flex flex-wrap justify-center text-center mb-24">
-                        <div class="w-full lg:w-6/12 px-4">
-                            <h2 class="text-4xl font-semibold">Here are our heroes</h2>
-                            <!-- <p class="text-lg leading-relaxed m-4 text-gray-600">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center mt-32">
+          <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+            <div
+              class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
+            >
+              <i class="fas fa-user-friends text-xl"></i>
+            </div>
+            <h3 class="text-3xl mb-2 font-semibold leading-normal">
+              Working with us is a pleasure
+            </h3>
+            <p
+              class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
+            >
+              We Divine Architecture is an architectural firm based in Delhi,
+              serving the surrounding are of Gurugram, Noida, NCR and all over
+              India. which provides you with services like architecture,interior
+              & outdoor designing,floor plannig and consultancy etc.
+            </p>
+            <p
+              class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
+            >
+              It’s our mission at Divine Architectural to provide client focused
+              service through our responsible practice of Architecture. Our
+              tradition of dedication, professionalism and outstanding customer
+              service is a testament to that mission as we strive each day for
+              excellence in bringing our valued clients’ ideas to life.
+            </p>
+            <a href="#contact-us">
+              <button
+                class="text-white bg-gray-800 active:bg-gray-100 text-s font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0"
+                type="button"
+                style="transition: all 0.15s ease 0s"
+              >
+                <i class="fas fa-envelope-open-text mr-1"></i> Get in touch
+              </button>
+            </a>
+          </div>
+          <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+            <div
+              class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600"
+            >
+              <img
+                alt="..."
+                src="./assets/img/work_with_us.jpg"
+                class="w-full align-middle rounded-t-lg"
+              />
+              <blockquote class="relative p-8 mb-4">
+                <svg
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 583 95"
+                  class="absolute left-0 w-full block"
+                  style="height: 95px; top: -94px"
+                >
+                  <polygon
+                    points="-30,95 583,95 583,65"
+                    class="text-pink-600 fill-current"
+                  ></polygon>
+                </svg>
+                <h4 class="text-xl font-bold text-white">
+                  Experienced Experts
+                </h4>
+                <p class="text-md font-light mt-2 text-white">
+                  Our Architectural experts provides you with their best
+                  architectural services through their years or experience and
+                  expertise.
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="pt-20 pb-48">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap justify-center text-center mb-24">
+            <div class="w-full lg:w-6/12 px-4">
+              <h2 class="text-4xl font-semibold">Here are our heroes</h2>
+              <!-- <p class="text-lg leading-relaxed m-4 text-gray-600">
                                 According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead
                                 scentist, puts the potentially record maximum.
                             </p> -->
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <div class="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
-                            <div class="px-6">
-                                <img
-                                    alt="..."
-                                    src="./assets/img/SC.jpg"
-                                    class="shadow-lg rounded-full max-w-full mx-auto"
-                                    style="max-width: 200px"
-                                />
-                                <div class="pt-6 text-center">
-                                    <h5 class="text-xl font-bold">Subhash Chand</h5>
-                                    <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">SENIOR ARCHITECT</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
-                            <div class="px-6">
-                                <img
-                                    alt="..."
-                                    src="./assets/img/SM.jpg"
-                                    class="shadow-lg rounded-full max-w-full mx-auto"
-                                    style="max-width: 200px"
-                                />
-                                <div class="pt-6 text-center">
-                                    <h5 class="text-xl font-bold">Sumit Mewati</h5>
-                                    <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">ARCHITECT</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
-                            <div class="px-6">
-                                <img
-                                    alt="..."
-                                    src="./assets/img/AA.jpg"
-                                    class="shadow-lg rounded-full max-w-full mx-auto"
-                                    style="max-width: 200px"
-                                />
-                                <div class="pt-6 text-center">
-                                    <h5 class="text-xl font-bold">Aarif Ahmed</h5>
-                                    <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">STRUCTURAL ENGINEER</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
+              <div class="px-6">
+                <img
+                  alt="..."
+                  src="./assets/img/SC.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 200px"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Subhash Chand</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    SENIOR ARCHITECT
+                  </p>
                 </div>
-            </section>
-            <section class="pb-20 relative block bg-gray-900">
-                <div
-                    class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-                    style="height: 80px; transform: translateZ(0px)"
-                >
-                    <svg
-                        class="absolute bottom-0 overflow-hidden"
-                        xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="none"
-                        version="1.1"
-                        viewBox="0 0 2560 100"
-                        x="0"
-                        y="0"
+              </div>
+            </div>
+            <div class="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
+              <div class="px-6">
+                <img
+                  alt="..."
+                  src="./assets/img/SM.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 200px"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Sumit Mewati</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    ARCHITECT
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
+              <div class="px-6">
+                <img
+                  alt="..."
+                  src="./assets/img/AA.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 200px"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Aarif Ahmed</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    STRUCTURAL ENGINEER
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="pb-20 relative block bg-gray-900">
+        <div
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+          style="height: 80px; transform: translateZ(0px)"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-gray-900 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
+          <div class="flex flex-wrap text-center justify-center">
+            <div class="w-full lg:w-6/12 px-4">
+              <h2 class="text-4xl font-semibold text-white">Why Choose Us</h2>
+              <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
+                We provide the best possible solutions to your architectural and
+                interior designing needs. Satisfying customers since 2007.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-wrap mt-12 justify-center">
+            <div class="w-full lg:w-3/12 px-4 text-center">
+              <div
+                class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
+              >
+                <i class="fas fa-medal text-xl"></i>
+              </div>
+              <h6 class="text-xl mt-5 font-semibold text-white">
+                Excelent Services
+              </h6>
+              <p class="mt-2 mb-4 text-gray-500">
+                In the supervision of our experts with provide the best possible
+                services.
+              </p>
+            </div>
+            <div class="w-full lg:w-3/12 px-4 text-center">
+              <div
+                class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
+              >
+                <i class="fas fa-poll text-xl"></i>
+              </div>
+              <h5 class="text-xl mt-5 font-semibold text-white">
+                Grow your market
+              </h5>
+              <p class="mt-2 mb-4 text-gray-500">
+                With our best interior and structural designs build an innovativ
+                market
+              </p>
+            </div>
+            <div class="w-full lg:w-3/12 px-4 text-center">
+              <div
+                class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
+              >
+                <i class="fas fa-lightbulb text-xl"></i>
+              </div>
+              <h5 class="text-xl mt-5 font-semibold text-white">Build time</h5>
+              <p class="mt-2 mb-4 text-gray-500">
+                We know time is money, so we solve your problems in least
+                possible time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative block py-24 lg:pt-0 bg-gray-900" id="contact-us">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
+            <div class="w-full lg:w-6/12 px-4">
+              <div
+                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300"
+              >
+                <div class="flex-auto p-5 lg:p-10">
+                  <h4 class="text-2xl font-semibold">CONTACT US</h4>
+                  <p class="leading-relaxed mt-1 mb-4 text-gray-600">
+                    Complete this form and we will get back to you in 24 hours.
+                  </p>
+                  <div class="relative w-full mb-3 mt-8">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="full-name"
+                      >Full Name</label
+                    ><input
+                      type="text"
+                      class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                      placeholder="Full Name"
+                      style="transition: all 0.15s ease 0s"
+                    />
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="email"
+                      >Email Address</label
+                    ><input
+                      type="email"
+                      class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                      placeholder="Email"
+                      style="transition: all 0.15s ease 0s"
+                    />
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="email"
+                      >Phone Number</label
+                    ><input
+                      type="tel"
+                      class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                      placeholder="Phone"
+                      style="transition: all 0.15s ease 0s"
+                    />
+                  </div>
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                      for="message"
+                      >Message</label
+                    ><textarea
+                      rows="4"
+                      cols="80"
+                      class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                      placeholder="Type a message..."
+                    ></textarea>
+                  </div>
+                  <div class="text-center mt-6">
+                    <button
+                      class="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                      style="transition: all 0.15s ease 0s"
                     >
-                        <polygon class="text-gray-900 fill-current" points="2560 0 2560 100 0 100"></polygon>
-                    </svg>
+                      Send Message
+                    </button>
+                  </div>
                 </div>
-                <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
-                    <div class="flex flex-wrap text-center justify-center">
-                        <div class="w-full lg:w-6/12 px-4">
-                            <h2 class="text-4xl font-semibold text-white">Why Choose Us</h2>
-                            <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-                                We provide the best possible solutions to your architectural and interior designing needs.
-                                Satisfying customers since 2007.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap mt-12 justify-center">
-                        <div class="w-full lg:w-3/12 px-4 text-center">
-                            <div
-                                class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-                            >
-                                <i class="fas fa-medal text-xl"></i>
-                            </div>
-                            <h6 class="text-xl mt-5 font-semibold text-white">Excelent Services</h6>
-                            <p class="mt-2 mb-4 text-gray-500">
-                                In the supervision of our experts with provide the best possible services.
-                            </p>
-                        </div>
-                        <div class="w-full lg:w-3/12 px-4 text-center">
-                            <div
-                                class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-                            >
-                                <i class="fas fa-poll text-xl"></i>
-                            </div>
-                            <h5 class="text-xl mt-5 font-semibold text-white">Grow your market</h5>
-                            <p class="mt-2 mb-4 text-gray-500">
-                                With our best interior and structural designs build an innovativ market
-                            </p>
-                        </div>
-                        <div class="w-full lg:w-3/12 px-4 text-center">
-                            <div
-                                class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-                            >
-                                <i class="fas fa-lightbulb text-xl"></i>
-                            </div>
-                            <h5 class="text-xl mt-5 font-semibold text-white">Build time</h5>
-                            <p class="mt-2 mb-4 text-gray-500">
-                                We know time is money, so we solve your problems in least possible time.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="relative block py-24 lg:pt-0 bg-gray-900" id="contact-us">
-                <div class="container mx-auto px-4">
-                    <div class="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-                        <div class="w-full lg:w-6/12 px-4">
-                            <div
-                                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300"
-                            >
-                                <div class="flex-auto p-5 lg:p-10">
-                                    <h4 class="text-2xl font-semibold">CONTACT US</h4>
-                                    <p class="leading-relaxed mt-1 mb-4 text-gray-600">
-                                        Complete this form and we will get back to you in 24 hours.
-                                    </p>
-                                    <div class="relative w-full mb-3 mt-8">
-                                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="full-name"
-                                            >Full Name</label
-                                        ><input
-                                            type="text"
-                                            class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-                                            placeholder="Full Name"
-                                            style="transition: all 0.15s ease 0s"
-                                        />
-                                    </div>
-                                    <div class="relative w-full mb-3">
-                                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="email"
-                                            >Email Address</label
-                                        ><input
-                                            type="email"
-                                            class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-                                            placeholder="Email"
-                                            style="transition: all 0.15s ease 0s"
-                                        />
-                                    </div>
-                                    <div class="relative w-full mb-3">
-                                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="email"
-                                            >Phone Number</label
-                                        ><input
-                                            type="tel"
-                                            class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-                                            placeholder="Phone"
-                                            style="transition: all 0.15s ease 0s"
-                                        />
-                                    </div>
-                                    <div class="relative w-full mb-3">
-                                        <label class="block uppercase text-gray-700 text-xs font-bold mb-2" for="message"
-                                            >Message</label
-                                        ><textarea
-                                            rows="4"
-                                            cols="80"
-                                            class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-                                            placeholder="Type a message..."
-                                        ></textarea>
-                                    </div>
-                                    <div class="text-center mt-6">
-                                        <button
-                                            class="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                                            type="button"
-                                            style="transition: all 0.15s ease 0s"
-                                        >
-                                            Send Message
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        <footer class="relative bg-gray-300 pt-8 pb-6">
-            <div
-                class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-                style="height: 80px; transform: translateZ(0px)"
-            >
-                <svg
-                    class="absolute bottom-0 overflow-hidden"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                    version="1.1"
-                    viewBox="0 0 2560 100"
-                    x="0"
-                    y="0"
+    <footer class="relative bg-gray-300 pt-8 pb-6">
+      <div
+        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        style="height: 80px; transform: translateZ(0px)"
+      >
+        <svg
+          class="absolute bottom-0 overflow-hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          y="0"
+        >
+          <polygon
+            class="text-gray-300 fill-current"
+            points="2560 0 2560 100 0 100"
+          ></polygon>
+        </svg>
+      </div>
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-6/12 px-4">
+            <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
+            <h5 class="text-lg mt-0 mb-2 text-gray-700">
+              Connect with us on these platforms
+              <i class="far fa-smile-beam"></i>
+            </h5>
+            <div class="mt-6">
+              <button
+                class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-facebook-square"></i></button
+              ><button
+                class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-twitter"></i></button
+              ><button
+                class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-instagram"></i></button
+              ><button
+                class="bg-white text-blue-700 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-linkedin"></i></button
+              ><button
+                class="bg-white text-green-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-whatsapp"></i>
+              </button>
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="flex flex-wrap items-top mb-6">
+              <div class="w-full lg:w-4/12 px-4 ml-auto">
+                <span
+                  class="block uppercase text-gray-600 text-sm font-semibold mb-2"
+                  >Useful Links</span
                 >
-                    <polygon class="text-gray-300 fill-current" points="2560 0 2560 100 0 100"></polygon>
-                </svg>
+                <ul class="list-unstyled">
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://www.creative-tim.com/presentation"
+                      >About Us</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://blog.creative-tim.com"
+                      >Blog</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://www.github.com/creativetimofficial"
+                      >Github</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://www.creative-tim.com/bootstrap-themes/free"
+                      >Free Products</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="w-full lg:w-4/12 px-4">
+                <span
+                  class="block uppercase text-gray-600 text-sm font-semibold mb-2"
+                  >Other Resources</span
+                >
+                <ul class="list-unstyled">
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md"
+                      >MIT License</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://creative-tim.com/terms"
+                      >Terms &amp; Conditions</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://creative-tim.com/privacy"
+                      >Privacy Policy</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://creative-tim.com/contact-us"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="container mx-auto px-4">
-                <div class="flex flex-wrap">
-                    <div class="w-full lg:w-6/12 px-4">
-                        <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
-                        <h5 class="text-lg mt-0 mb-2 text-gray-700">
-                            Connect with us on these platforms <i class="far fa-smile-beam"></i>
-                        </h5>
-                        <div class="mt-6">
-                            <button
-                                class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                                type="button"
-                            >
-                                <i class="flex fab fa-facebook-square"></i></button
-                            ><button
-                                class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                                type="button"
-                            >
-                                <i class="flex fab fa-twitter"></i></button
-                            ><button
-                                class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                                type="button"
-                            >
-                                <i class="flex fab fa-instagram"></i></button
-                            ><button
-                                class="bg-white text-blue-700 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                                type="button"
-                            >
-                                <i class="flex fab fa-linkedin"></i></button
-                            ><button
-                                class="bg-white text-green-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                                type="button"
-                            >
-                                <i class="flex fab fa-whatsapp"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-6/12 px-4">
-                        <div class="flex flex-wrap items-top mb-6">
-                            <div class="w-full lg:w-4/12 px-4 ml-auto">
-                                <span class="block uppercase text-gray-600 text-sm font-semibold mb-2">Useful Links</span>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://www.creative-tim.com/presentation"
-                                            >About Us</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://blog.creative-tim.com"
-                                            >Blog</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://www.github.com/creativetimofficial"
-                                            >Github</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://www.creative-tim.com/bootstrap-themes/free"
-                                            >Free Products</a
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="w-full lg:w-4/12 px-4">
-                                <span class="block uppercase text-gray-600 text-sm font-semibold mb-2">Other Resources</span>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md"
-                                            >MIT License</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://creative-tim.com/terms"
-                                            >Terms &amp; Conditions</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://creative-tim.com/privacy"
-                                            >Privacy Policy</a
-                                        >
-                                    </li>
-                                    <li>
-                                        <a
-                                            class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                                            href="https://creative-tim.com/contact-us"
-                                            >Contact Us</a
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="my-6 border-gray-400" />
-                <div class="flex flex-wrap items-center md:justify-between justify-center">
-                    <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-                        <div class="text-sm text-gray-600 font-semibold py-1">
-                            Copyright © 2021 -
-                            <a href="#" class="text-gray-600 hover:text-gray-900"> Divine Architecture</a>.
-                        </div>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <hr class="my-6 border-gray-400" />
+        <div
+          class="flex flex-wrap items-center md:justify-between justify-center"
+        >
+          <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+            <div class="text-sm text-gray-600 font-semibold py-1">
+              Copyright © 2021 -
+              <a href="#" class="text-gray-600 hover:text-gray-900">
+                Divine Architecture</a
+              >.
             </div>
-        </footer>
-    </body>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 
-    <script>
-        function toggleNavbar(collapseID) {
-            document.getElementById(collapseID).classList.toggle("hidden");
-            document.getElementById(collapseID).classList.toggle("block");
-        }
+  <script>
+    function toggleNavbar(collapseID) {
+      document.getElementById(collapseID).classList.toggle("hidden");
+      document.getElementById(collapseID).classList.toggle("block");
+    }
 
-        document.addEventListener("scroll", () => {
-            if (window.scrollY >= 100) {
-                document.getElementById("nav").classList.add("navbar-fixed-top-scrolled");
-                document.getElementById("nav").classList.remove("navbar-fixed-top");
-            } else {
-                document.getElementById("nav").classList.add("navbar-fixed-top");
-                document.getElementById("nav").classList.remove("navbar-fixed-top-scrolled");
-            }
-        });
+    document.addEventListener("scroll", () => {
+      if (window.scrollY >= 100) {
+        document
+          .getElementById("nav")
+          .classList.add("navbar-fixed-top-scrolled");
+        document.getElementById("nav").classList.remove("navbar-fixed-top");
+      } else {
+        document.getElementById("nav").classList.add("navbar-fixed-top");
+        document
+          .getElementById("nav")
+          .classList.remove("navbar-fixed-top-scrolled");
+      }
+    });
 
-        setTimeout(() => {
-            if (document.getElementById("carousel-1").checked === true) {
-                document.getElementById("carousel-2").checked = true;
-            } else {
-                document.getElementById("carousel-3").checked = true;
-            }
-        }, 3000);
-    </script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    setTimeout(() => {
+      if (document.getElementById("carousel-1").checked === true) {
+        document.getElementById("carousel-2").checked = true;
+      } else {
+        document.getElementById("carousel-3").checked = true;
+      }
+    }, 3000);
+  </script>
+  <script
+    type="text/javascript"
+    src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+  ></script>
 </html>
